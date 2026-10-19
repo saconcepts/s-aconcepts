@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>S&A Concepts | Streetwear</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #fff;
+            background-color: #101010;
+
+            /* FONDO URBANO */
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.72),
+                    rgba(0, 0, 0, 0.82)
+                ),
+                url("images/fondo.jpg");
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* BARRA SUPERIOR */
+
+        .announcement {
+            background: #c6a45b;
+            color: #111;
+            text-align: center;
+            padding: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+        }
+
+        /* ENCABEZADO */
+
+        header {
+            background: rgba(10, 10, 10, 0.88);
+            border-bottom: 1px solid rgba(198, 164, 91, 0.35);
+            padding: 20px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            backdrop-filter: blur(12px);
+        }
+
+        .logo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: #c6a45b;
+        }
+
+        nav {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            font-size: 12px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c6a45b;
+        }
+
+        /* PORTADA */
+
+        .hero {
+            min-height: 440px;
+            padding: 100px 8%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.05)
+                );
+        }
+
+        .hero-label {
+            color: #c6a45b;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 4px;
+            margin-bottom: 18px;
+        }
+
+        .hero h1 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(42px, 7vw, 78px);
+            line-height: 1.05;
+            max-width: 800px;
+            text-transform: uppercase;
+        }
+
+        .hero h1 span {
+            color: #c6a45b;
+        }
+
+        .hero p {
+            margin-top: 20px;
+            color: #ddd;
+            font-size: 14px;
+            line-height: 1.8;
+            max-width: 500px;
+        }
+
+        .button-gold {
+            display: inline-block;
+            margin-top: 30px;
+            background: #c6a45b;
+            color: #111;
+            padding: 15px 26px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .button-gold:hover {
+            background: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* FRANJA INFORMATIVA */
+
+        .info-strip {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 22px;
+            background: rgba(12, 12, 12, 0.92);
+            border-top: 1px solid #282828;
+            border-bottom: 1px solid #282828;
+        }
+
+        .info-strip p {
+            font-size: 11px;
+            color: #ddd;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .info-strip span {
+            color: #c6a45b;
+        }
+
+        /* CATÁLOGO */
+
+        .catalog {
+            padding: 85px 7%;
+            background: rgba(12, 12, 12, 0.48);
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading p {
+            color: #c6a45b;
+            font-size: 11px;
+            letter-spacing: 4px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(32px, 5vw, 48px);
+            text-transform: uppercase;
+        }
+
+        .section-heading .description {
+            color: #bbb;
+            letter-spacing: 0;
+            font-size: 13px;
+            font-weight: 400;
+            margin-top: 12px;
+        }
+
+        .products {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 24px;
+            max-width: 1250px;
+            margin: auto;
+        }
+
+        .product-card {
+            background: rgba(20, 20, 20, 0.94);
+            border: 1px solid #303030;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-6px);
+            border-color: #c6a45b;
+        }
+
+        .product-image {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            display: block;
+            background: #222;
+        }
+
+        .product-info {
+            padding: 22px;
+        }
+
+        .product-category {
+            color: #c6a45b;
+            font-size: 10px;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
+
+        .product-info h3 {
+            font-family: 'Oswald', sans-serif;
+            font-size: 21px;
+            margin-top: 10px;
+            text-transform: uppercase;
+        }
+
+        .product-info p {
+            color: #aaa;
+            font-size: 12px;
+            margin-top: 8px;
+            line-height: 1.7;
+        }
+
+        .product-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: 22px;
+        }
+
+        .price {
+            color: #c6a45b;
+            font-weight: 800;
+            font-size: 17px;
+        }
+
+        .product-link {
+            font-size: 10px;
+            font-weight: 800;
+            border: 1px solid #c6a45b;
+            padding: 10px 12px;
+            transition: 0.3s;
+        }
+
+        .product-link:hover {
+            background: #c6a45b;
+            color: #111;
+        }
+
+        /* CONTACTO */
+
+        .contact {
+            padding: 85px 7%;
+            text-align: center;
+            background: rgba(5, 5, 5, 0.88);
+            border-top: 1px solid #333;
+        }
+
+        .contact h2 {
+            font-family: 'Oswald', sans-serif;
+            font-size: clamp(32px, 5vw, 46px);
+            text-transform: uppercase;
+        }
+
+        .contact h2 span {
+            color: #c6a45b;
+        }
+
+        .contact p {
+            color: #ccc;
+            margin-top: 15px;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* PIE DE PÁGINA */
+
+        footer {
+            padding: 25px 7%;
+            text-align: center;
+            background: #080808;
+            border-top: 1px solid #252525;
+        }
+
+        footer .logo {
+            font-size: 22px;
+        }
+
+        footer p {
+            margin-top: 10px;
+            color: #777;
+            font-size: 10px;
+        }
+
+        /* BOTONES FLOTANTES */
+
+        .social-button {
+            position: fixed;
+            bottom: 22px;
+            z-index: 99999;
+            padding: 13px 17px;
+            border-radius: 30px;
+            font-size: 12px;
+            font-weight: 800;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.45);
+            transition: transform 0.3s;
+        }
+
+        .social-button:hover {
+            transform: translateY(-4px);
+        }
+
+        .instagram {
+            left: 18px;
+            background: #c6a45b;
+            color: #111;
+        }
+
+        .whatsapp {
+            right: 18px;
+            background: #25D366;
+            color: #07190c;
+        }
+
+        /* DISEÑO PARA CELULAR */
+
+        @media (max-width: 850px) {
+            .products {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            header {
+                justify-content: center;
+                text-align: center;
+            }
+
+            nav {
+                justify-content: center;
+            }
+
+            .hero {
+                min-height: 390px;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .product-image {
+                height: 280px;
+            }
+
+            .hero {
+                padding: 75px 7%;
+            }
+
+            .catalog {
+                padding: 60px 6%;
+            }
+
+            .info-strip {
+                gap: 16px;
+            }
+
+            .social-button {
+                bottom: 12px;
+                font-size: 10px;
+                padding: 12px;
+            }
+
+            .instagram {
+                left: 10px;
+            }
+
+            .whatsapp {
+                right: 10px;
+            }
+
+            body {
+                background-attachment: scroll;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement">
+        STREETWEAR • SNEAKERS • ACCESORIOS
+    </div>
+
+    <header>
+        <a href="#inicio" class="logo">
+            S&A <span>CONCEPTS</span>
+        </a>
+
+        <nav>
+            <a href="#inicio">INICIO</a>
+            <a href="#catalogo">CATÁLOGO</a>
+            <a href="#contacto">CONTACTO</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero" id="inicio">
+            <p class="hero-label">DEFINE TU PROPIO ESTILO</p>
+
+            <h1>
+                TU ESTILO.<br>
+                <span>TUS REGLAS.</span>
+            </h1>
+
+            <p>
+                Streetwear, sneakers y accesorios para quienes
+                no siguen tendencias: crean su propio camino.
+            </p>
+
+            <a href="#catalogo" class="button-gold">
+                EXPLORAR CATÁLOGO
+            </a>
+        </section>
+
+        <section class="info-strip">
+            <p><span>✦</span> ESTILO URBANO</p>
+            <p><span>✦</span> NUEVOS LANZAMIENTOS</p>
+            <p><span>✦</span> ENCUENTRA TU ESTILO</p>
+        </section>
+
+        <section class="catalog" id="catalogo">
+            <div class="section-heading">
+                <p>DESCUBRE LA COLECCIÓN</p>
+                <h2>CATÁLOGO</h2>
+                <p class="description">
+                    Encuentra las piezas que van contigo.
+                </p>
+            </div>
+
+            <div id="catalogo-productos" class="products">
+
+        <section class="contact" id="contacto">
+            <p class="hero-label">FORMA PARTE DEL MOVIMIENTO</p>
+
+            <h2>EL ESTILO HABLA.<br>
+                <span>TÚ DECIDES QUÉ DICE.</span>
+            </h2>
+
+            <p>
+                ¿Te interesa algún producto?<br>
+                Escríbenos para consultar disponibilidad y precios.
+            </p>
+
+            <a class="button-gold"
+               href="https://www.instagram.com/saconcepts.mx?mdxt=Y256NTYwcDB2dHlx"
+               target="_blank"
+               rel="noopener noreferrer">
+                CONTÁCTANOS
+            </a>
+        </section>
+    </main>
+
+    <footer>
+        <div class="logo">S&A <span>CONCEPTS</span></div>
+        <p>STREETWEAR • SNEAKERS • ACCESORIOS</p>
+        <p>©️ 2026 S&A Concepts. Todos los derechos reservados.</p>
+    </footer>
+
+    <!-- INSTAGRAM -->
+    <a class="social-button instagram"
+       href="https://www.instagram.com/saconcepts.mx?mdxt=Y256NTYwcDB2dHlx"
+       target="_blank"
+       rel="noopener noreferrer">
+        INSTAGRAM
+    </a>
+
+    <!-- WHATSAPP -->
+    <a class="social-button whatsapp"
+       href="https://chat.whatsapp.com/E7gFRCNnaFs5YkWyublRYC?mode=gi_t"
+       target="_blank"
+       rel="noopener noreferrer">
+        WHATSAPP
+    </a>
+<!-- FIREBASE CONEXIÓN -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+  import { getFirestore, collection, onSnapshot } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAyIw3F6-BFvm4AKR258_AVt83DPnNgQII",
+    authDomain: "sa-concepts.firebaseapp.com",
+    projectId: "sa-concepts",
+    storageBucket: "sa-concepts.firebasestorage.app",
+    messagingSenderId: "813531854923",
+    appId: "1:813531854923:web:a30aa090b3e8e0b40c75ce"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const contenedor = document.getElementById("catalogo-productos");
+
+  onSnapshot(collection(db, "productos"), (snapshot) => {
+    if (!contenedor) return;
+    contenedor.innerHTML = "";
+    
+    snapshot.forEach((doc) => {
+      const producto = doc.data();
+      
+      contenedor.innerHTML += `
+        <article class="product-card">
+          ${producto.imagen ? `<img class="product-image" src="${producto.imagen}" alt="${producto.nombre || 'Producto'}">` : ''}
+          <div class="product-info">
+            <h3>${producto.nombre || 'Producto'}</h3>
+            ${producto.descripcion ? `<p>${producto.descripcion}</p>` : ''}
+            <div class="product-bottom">
+              <span class="price">CONSULTA EN DM</span>
+              <a class="product-link" 
+                 href="https://www.instagram.com/saconcepts.mx" 
+                 target="_blank" 
+                 rel="noopener noreferrer">
+                 CONSULTAR
+              </a>
+            </div>
+          </div>
+        </article>
+      `;
+    });
+  });
+</script>
+</script>
+</body>
+</html>
